@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Dashboard – CodingCamp</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ======== HEADER ======== -->
+    <header>
+      <h1><span class="logo-icon">🚀</span> Life Dashboard</h1>
+      <div class="header-controls">
+        <input
+          type="text"
+          id="user-name-input"
+          placeholder="Your name…"
+          maxlength="30"
+          aria-label="Enter your name for personalised greeting"
+        />
+        <button id="theme-toggle" aria-label="Toggle light/dark mode">
+          🌙 Dark Mode
+        </button>
+      </div>
+    </header>
+
+    <!-- ======== HERO – CLOCK & GREETING ======== -->
+    <section class="hero" aria-label="Clock and greeting">
+      <div id="clock" aria-live="polite" aria-label="Current time">
+        00:00:00
+      </div>
+      <div id="date-display" aria-live="polite">Loading date…</div>
+      <div id="greeting" aria-live="polite">Good Morning! 👋</div>
+    </section>
+
+    <!-- ======== MAIN GRID ======== -->
+    <main>
+      <!-- ── Focus Timer ── -->
+      <div class="card" aria-label="Focus timer">
+        <h2 class="card-title">⏱️ Focus Timer</h2>
+
+        <div class="timer-wrap">
+          <!-- SVG Ring -->
+          <div
+            class="timer-ring-wrap"
+            role="img"
+            aria-label="Timer progress ring"
+          >
+            <svg
+              width="180"
+              height="180"
+              viewBox="0 0 180 180"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient
+                  id="timerGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#7b2ff7" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+              </defs>
+              <circle class="timer-ring-track" cx="90" cy="90" r="80" />
+              <circle
+                class="timer-ring-progress"
+                id="timer-ring-progress"
+                cx="90"
+                cy="90"
+                r="80"
+              />
+            </svg>
+            <div class="timer-display">
+              <span id="timer-time" aria-live="polite">25:00</span>
+              <span id="timer-label">Ready</span>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="timer-buttons">
+            <button
+              id="btn-start"
+              class="btn btn-primary"
+              aria-label="Start timer"
+            >
+              ▶ Start
+            </button>
+            <button
+              id="btn-stop"
+              class="btn btn-secondary"
+              aria-label="Stop timer"
+            >
+              ⏸ Stop
+            </button>
+            <button
+              id="btn-reset"
+              class="btn btn-secondary"
+              aria-label="Reset timer"
+            >
+              🔄 Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── To-Do List ── -->
+      <div class="card" aria-label="To-do list">
+        <h2 class="card-title">📝 To-Do List</h2>
+
+        <div class="todo-input-row">
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="Add a new task…"
+            maxlength="120"
+            aria-label="New task name"
+          />
+          <button
+            id="todo-add-btn"
+            class="btn btn-primary"
+            aria-label="Add task"
+          >
+            ＋ Add
+          </button>
+        </div>
+
+        <ul id="todo-list" aria-label="Task list" aria-live="polite">
+          <!-- Tasks injected by JS -->
+        </ul>
+      </div>
+
+      <!-- ── Quick Links ── -->
+      <div class="card" aria-label="Quick links">
+        <h2 class="card-title">🔗 Quick Links</h2>
+
+        <div class="links-input-row">
+          <input
+            type="text"
+            id="link-name-input"
+            placeholder="Link name"
+            maxlength="40"
+            aria-label="Quick link label"
+          />
+          <input
+            type="url"
+            id="link-url-input"
+            placeholder="https://example.com"
+            maxlength="300"
+            aria-label="Quick link URL"
+          />
+          <button
+            id="link-add-btn"
+            class="btn btn-primary"
+            aria-label="Add quick link"
+          >
+            ＋ Add
+          </button>
+        </div>
+
+        <div id="links-list" aria-label="Quick links list" aria-live="polite">
+          <!-- Links injected by JS -->
+        </div>
+      </div>
+
+      <!-- ── About / Tips card ── -->
+      <div class="card" aria-label="Tips">
+        <h2 class="card-title">💡 Tips</h2>
+        <ul
+          style="
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+          "
+        >
+          <li>
+            🍅 Use the
+            <strong style="color: var(--purple-mid)">Focus Timer</strong> for
+            Pomodoro-style sessions — 25 min work, 5 min break.
+          </li>
+          <li>
+            ✅ Check off tasks to track your progress. Completed tasks show a
+            strikethrough.
+          </li>
+          <li>✏️ Click the pencil icon to rename any task inline.</li>
+          <li>
+            🔗 Add your most-visited sites to
+            <strong style="color: var(--purple-mid)">Quick Links</strong> for
+            one-click access.
+          </li>
+          <li>
+            🌙 Toggle
+            <strong style="color: var(--purple-mid)">Dark Mode</strong> anytime
+            using the header button.
+          </li>
+          <li>
+            💾 Everything is saved automatically in your browser's Local
+            Storage.
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer>
+      <p>
+        Built by <strong>Helen Stephanis Simarmata</strong> · CodingCamp · 2026
+      </p>
+    </footer>
+
+    <!-- ======== TOAST ======== -->
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
